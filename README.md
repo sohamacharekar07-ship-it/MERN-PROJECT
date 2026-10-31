@@ -248,5 +248,4 @@ MongoDB Compass can be used to view and manage the stored student records.
 
 ---
 
-⭐ **If you find this project useful, consider giving this repository a star!**
 
