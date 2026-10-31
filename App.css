@@ -1,0 +1,117 @@
+:root {
+  --ink: #1b2540;
+  --muted: #5d6784;
+  --bg: #eef1f6;
+  --surface: #ffffff;
+  --line: #d9deea;
+  --accent: #0e7c66;
+  --accent-dark: #0a5f4e;
+  --danger: #b42318;
+  --danger-bg: #fdecea;
+  --ok-bg: #e3f4ee;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2 { margin: 0; }
+
+.app { max-width: 1280px; margin: 0 auto; padding: 24px 20px 64px; }
+
+.header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.header h1 { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; }
+.header p { margin: 4px 0 0; color: var(--muted); }
+
+.stats { display: flex; gap: 12px; margin: 0; }
+.stats div {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 16px; min-width: 130px;
+}
+.stats dt { font-size: 0.8rem; color: var(--muted); }
+.stats dd { margin: 0; font-size: 1.4rem; font-weight: 600; }
+
+.layout { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+@media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
+
+.panel {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px; padding: 20px;
+}
+.panel h2 { font-size: 1.1rem; font-weight: 600; }
+
+.form { display: grid; gap: 14px; position: sticky; top: 16px; }
+@media (max-width: 960px) { .form { position: static; } }
+
+label { display: grid; gap: 4px; font-size: 0.9rem; font-weight: 500; }
+
+input, select {
+  font: inherit; color: inherit; padding: 9px 10px;
+  border: 1px solid var(--line); border-radius: 6px; background: #fff;
+}
+input:focus-visible, select:focus-visible, .btn:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 1px;
+}
+.has-error input, .has-error select { border-color: var(--danger); background: var(--danger-bg); }
+.field-error { margin: 0; color: var(--danger); font-size: 0.82rem; font-weight: 400; }
+
+.form-actions { display: flex; gap: 10px; margin-top: 4px; }
+
+.btn {
+  font: inherit; font-weight: 500; padding: 9px 16px; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink);
+}
+.btn:hover { background: var(--bg); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-small { padding: 5px 10px; font-size: 0.85rem; }
+.btn-danger { color: var(--danger); border-color: #efc2bd; }
+.btn-danger:hover { background: var(--danger-bg); }
+
+.list-head {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.search { flex: 1 1 260px; max-width: 380px; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+tbody tr:hover { background: #f7f9fc; }
+.num { text-align: right; }
+.roll { font-weight: 600; }
+.actions { display: flex; gap: 6px; justify-content: flex-end; }
+
+.marks { display: inline-block; min-width: 38px; text-align: center; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+.marks.pass { background: var(--ok-bg); color: var(--accent-dark); }
+.marks.fail { background: var(--danger-bg); color: var(--danger); }
+
+.empty { padding: 40px 12px; text-align: center; color: var(--muted); }
+
+.toast {
+  position: fixed; right: 20px; bottom: 20px; max-width: 360px;
+  display: flex; align-items: center; gap: 12px; justify-content: space-between;
+  padding: 12px 16px; border-radius: 8px; color: #fff;
+  box-shadow: 0 6px 20px rgba(27, 37, 64, 0.25);
+}
+.toast-success { background: var(--accent-dark); }
+.toast-error { background: var(--danger); }
+.toast button { background: none; border: 0; color: inherit; font-size: 1.3rem; cursor: pointer; line-height: 1; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
